@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="/static/style.css" rel="stylesheet" type="text/css">
+<title>Классификатор грибов</title>
+</head>
+<body>
+
+<form class="form-inline" method="POST" action="/">
+        {% for feature in features %}
+            <div>
+                <label>{{ feature }}</label>
+                <select name = "{{ loop.index }}">
+                    {% for u in features[feature]  %}
+                        <option value= "{{u}}">{{u}}</option>"
+                    {% endfor %}
+                </select>
+            </div>
+        {% endfor %}
+        <br>
+        <div>
+            <label>Модель</label>
+        <select name = "model">
+            {% for model in models  %}
+                <option value= "{{model}}">{{model}}</option>"
+            {% endfor %}
+            </select>
+        <br>
+        </div>
+
+    <button type="submit">Отправить</button>
+    <br>
+    <p>{{ response }}</p>
+</form></body>
+</html>
